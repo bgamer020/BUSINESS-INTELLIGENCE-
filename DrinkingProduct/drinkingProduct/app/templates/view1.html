@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> NƯỚC GIẢI KHÁT </h1>
+
+<form method="post" class="form-container">
+    {% csrf_token %}
+    <div class="grid-container">
+        <div class="form-button-column">
+            <button type="submit" class="btn btn-primary">TÌM KIẾM</button>
+            {{ form.as_p }}
+        </div>
+
+
+        <div class="result-column">
+            <h3>SẢN PHẨM TƯƠNG ĐƯƠNG:</h3>
+            {% if result_data %}
+            <div class="result-container">
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>THÀNH PHẦN</th>
+                            <th>GIÁ TRỊ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for header, value in result_data %}
+                        <tr>
+                            <td>{{ header }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <h3>GÓI SẢN PHẨM TRÊN THỊ TRƯỜNG</h3>
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>TÊN GÓI SẢN PHẨM</th>
+                            <th>SỐ LƯỢNG ĐÃ BÁN</th>
+                            <th>THƯƠNG HIỆU</th>
+                            <th>LOẠI SẢN PHẨM</th>
+                            <th>GIÁ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.product_name }}</td>
+                            <td>{{ product.quantity_sold }}</td>
+                            <td>{{ product.brand_name }}</td>
+                            <td>{{ product.product_type }}</td>
+                            <td>{{ product.price }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5">No matching products found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+</form>
+{% endblock %}

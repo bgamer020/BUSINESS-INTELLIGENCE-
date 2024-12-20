@@ -1,0 +1,91 @@
+/* Ensure full width */
+body {
+    background-color: lightblue;
+    /* Màu nền xanh nhạt cho toàn bộ trang */
+}
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Đảm bảo navbar luôn ở trên các phần tử khác */
+}
+
+
+body {
+    padding-top: 60px;
+    /* Tạo khoảng cách trên cùng để tránh che nội dung */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 3fr;
+    /* 3 columns for input and 1 column for result */
+    gap: 20px;
+    /* Space between columns */
+    padding: 20px;
+}
+
+.input-column,
+.result-column {
+    padding: 10px;
+    border: 1px solid grey;
+    /* Optional: add borders for clarity */
+}
+
+.form-button-column {
+    grid-column: span 1;
+    /* This makes the form and button span across 3 columns */
+    padding: 10px;
+    border: 1px solid grey;
+}
+
+.result-column {
+    grid-column: span 3;
+    /* The result column takes up one column space */
+}
+
+button {
+    width: 100%;
+}
+
+.result-container {
+    overflow-x: auto;
+    width: 100%;
+    font-size: 12px;
+    /* Giảm kích thước font để vừa khớp */
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    /* Đảm bảo các cột có chiều rộng đồng đều */
+}
+
+.result-table th,
+.result-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word;
+    /* Đảm bảo nội dung không tràn ra ngoài */
+}
+
+.result-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+button[type="submit"] {
+    background-color: green;
+    margin-bottom: 5px;
+    border-color: grey;
+}
+
+h3 {
+    margin: 20px;
+}
